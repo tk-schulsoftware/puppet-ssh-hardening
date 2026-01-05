@@ -74,10 +74,10 @@ class ssh_hardening::server (
     false => 'inet',
   }
 
-  $ciphers = get_ssh_ciphers($::operatingsystem, $::operatingsystemrelease, $cbc_required)
-  $macs = get_ssh_macs($::operatingsystem, $::operatingsystemrelease, $weak_hmac)
-  $kex = get_ssh_kex($::operatingsystem, $::operatingsystemrelease, $weak_kex)
-  $priv_sep = use_privilege_separation($::operatingsystem, $::operatingsystemrelease)
+  $ciphers = get_ssh_ciphers($facts['os']['name'], $facts['os']['release']['full'], $cbc_required)
+  $macs = get_ssh_macs($facts['os']['name'], $facts['os']['release']['full'], $weak_hmac)
+  $kex = get_ssh_kex($facts['os']['name'], $facts['os']['release']['full'], $weak_kex)
+  $priv_sep = use_privilege_separation($facts['os']['name'], $facts['os']['release']['full'])
 
   $permit_root_login = $allow_root_with_key ? {
     true  => 'without-password',
