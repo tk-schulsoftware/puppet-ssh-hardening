@@ -110,10 +110,6 @@ class ssh_hardening::client (
 
     # Never use host-based authentication. It can be exploited.
     'HostbasedAuthentication'   => 'no',
-    'RhostsRSAAuthentication'   => 'no',
-
-    # Enable RSA authentication via identity files.
-    'RSAAuthentication'         => 'yes',
 
     # Disable password-based authentication, it can allow for potentially
     # easier brute-force attacks.
